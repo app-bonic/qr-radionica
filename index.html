@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Radionica</title>
+<meta name="description" content="Besplatni generator QR kodova: URL, vCard, WiFi, događaj, lokacija… s bojama, gradijentom, logom i vlastitim oblicima. Sve se radi u pregledniku.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M6 6h9v9H6zm2 2v5h5V8zm9-2h9v9h-9zm2 2v5h5V8zM6 17h9v9H6zm2 2v5h5v-5zm9-2h3v3h-3zm6 0h3v3h-3zm-3 3h3v3h-3zm-3 3h3v3h-3zm6 0h3v3h-3z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+<header class="vrh">
+  <div class="vrh-unutra">
+    <svg class="znak" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path fill="#fff" fill-rule="evenodd" d="M6 6h9v9H6zm2 2v5h5V8zm9-2h9v9h-9zm2 2v5h5V8zM6 17h9v9H6zm2 2v5h5v-5zm9-2h3v3h-3zm6 0h3v3h-3zm-3 3h3v3h-3zm-3 3h3v3h-3zm6 0h3v3h-3z"/></svg>
+    <div>
+      <h1>QR Radionica</h1>
+      <p>Generator QR kodova s bojama, logom i vlastitim oblicima. Sve se radi u tvom pregledniku, ništa se ne šalje na poslužitelj.</p>
+    </div>
+  </div>
+</header>
+
+<main class="raspored">
+  <div class="lijevo">
+
+    <section class="kartica k-sadrzaj" aria-labelledby="n-sadrzaj">
+      <h2 id="n-sadrzaj" class="naslov"><span class="broj">1</span> Sadržaj</h2>
+      <nav class="tipovi" id="tipovi" role="tablist" aria-label="Vrsta QR koda"></nav>
+      <div class="forma" id="forma"></div>
+    </section>
+
+    <details class="kartica k-ostalo" id="d-boje" open>
+      <summary class="naslov"><span class="broj">2</span> Boje</summary>
+      <div class="sekcija">
+        <div class="seg" role="radiogroup" aria-label="Način bojanja">
+          <label><input type="radio" name="bojaNacin" value="jedna" data-k="bojaNacin"><span>Jedna boja</span></label>
+          <label><input type="radio" name="bojaNacin" value="grad" data-k="bojaNacin"><span>Gradijent</span></label>
+        </div>
+        <div class="red">
+          <label class="boja"><input type="color" data-k="boja1"><span><b class="samo-jedna">Boja koda</b><b class="samo-grad">Prva boja</b><small data-hex="boja1"></small></span></label>
+          <label class="boja samo-grad"><input type="color" data-k="boja2"><span><b>Druga boja</b><small data-hex="boja2"></small></span></label>
+        </div>
+        <div class="red samo-grad">
+          <label class="polje-mali">Vrsta gradijenta
+            <select data-k="gradTip"><option value="linear">Linearni</option><option value="radial">Kružni (iz sredine)</option></select>
+          </label>
+          <label class="polje-mali samo-lin">Kut <output data-o="gradKut" data-j="°"></output>
+            <input type="range" min="0" max="355" step="5" data-k="gradKut">
+          </label>
+        </div>
+        <label class="kvacica"><input type="checkbox" data-k="okoPosebno"><span>Posebne boje za oči (tri velika kvadrata u kutovima)</span></label>
+        <div class="red samo-oko">
+          <label class="boja"><input type="color" data-k="bojaOkvira"><span><b>Okvir oka</b><small data-hex="bojaOkvira"></small></span></label>
+          <label class="boja"><input type="color" data-k="bojaZjenice"><span><b>Zjenica oka</b><small data-hex="bojaZjenice"></small></span></label>
+        </div>
+        <div class="red">
+          <label class="boja"><input type="color" data-k="pozadina"><span><b>Pozadina</b><small data-hex="pozadina"></small></span></label>
+          <label class="kvacica"><input type="checkbox" data-k="prozirno"><span>Prozirna pozadina</span></label>
+        </div>
+        <button type="button" class="gumb tekstualni" id="zamijeni">Zamijeni boju koda i pozadine</button>
+      </div>
+    </details>
+
+    <details class="kartica k-ostalo" id="d-logo">
+      <summary class="naslov"><span class="broj">3</span> Logo u sredini</summary>
+      <div class="sekcija">
+        <div class="logo-galerija" id="logoGalerija"></div>
+        <label class="gumb sporedni datoteka">
+          <input type="file" id="logoDat" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml">
+          <span class="ik-mjesto" data-ik="upload"></span> Učitaj svoj logo <small>PNG, JPG, SVG, do 2 MB</small>
+        </label>
+        <div class="samo-logo">
+          <label class="polje-mali">Veličina loga <output data-o="logoVel" data-j=" %"></output>
+            <input type="range" min="10" max="32" step="1" data-k="logoVel">
+          </label>
+          <label class="kvacica"><input type="checkbox" data-k="logoOcisti"><span>Ukloni kod iza loga (preporučeno)</span></label>
+          <p class="napomena">Kad dodaš logo, korekcija pogreške se diže na <b>H (30 %)</b> da kod ostane čitljiv.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="kartica k-ostalo" id="d-dizajn" open>
+      <summary class="naslov"><span class="broj">4</span> Oblik</summary>
+      <div class="sekcija">
+        <h3 class="podnaslov">Tijelo koda</h3>
+        <div class="biraci" data-grupa="tijelo"></div>
+        <h3 class="podnaslov">Okvir oka</h3>
+        <div class="biraci" data-grupa="okvir"></div>
+        <h3 class="podnaslov">Zjenica oka</h3>
+        <div class="biraci" data-grupa="zjenica"></div>
+      </div>
+    </details>
+
+    <details class="kartica k-ostalo" id="d-predlosci">
+      <summary class="naslov"><span class="broj">5</span> Gotovi predlošci</summary>
+      <div class="sekcija">
+        <div class="predlosci" id="predlosci"></div>
+      </div>
+    </details>
+  </div>
+
+  <aside class="kartica k-pregled" id="pregledKartica" aria-label="Pregled i preuzimanje">
+    <div class="pregled" id="pregled"></div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+    <p class="upozorenje" id="kontrast" hidden></p>
+    <p class="info" id="info"></p>
+
+    <div class="postavke">
+      <label class="polje-mali">Veličina slike <output data-o="velicina" data-j=" px"></output>
+        <input type="range" min="200" max="2000" step="50" data-k="velicina">
+      </label>
+      <label class="polje-mali">Rub oko koda <output data-o="rub" data-j=" mod."></output>
+        <input type="range" min="0" max="8" step="1" data-k="rub">
+      </label>
+      <label class="polje-mali">Korekcija pogreške
+        <select data-k="ecc">
+          <option value="L">L — 7 % (najmanji kod)</option>
+          <option value="M">M — 15 % (standard)</option>
+          <option value="Q">Q — 25 %</option>
+          <option value="H">H — 30 % (za logo)</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="preuzmi">
+      <button type="button" class="gumb glavni" data-fmt="png"><span class="ik-mjesto" data-ik="preuzmi"></span> Preuzmi PNG</button>
+      <div class="mali-gumbi">
+        <button type="button" class="gumb sporedni" data-fmt="svg">SVG</button>
+        <button type="button" class="gumb sporedni" data-fmt="jpg">JPG</button>
+        <button type="button" class="gumb sporedni" data-fmt="pdf">PDF</button>
+        <button type="button" class="gumb sporedni" data-fmt="kopiraj" title="Kopiraj sliku u međuspremnik"><span class="ik-mjesto" data-ik="kopiraj"></span> Kopiraj</button>
+      </div>
+    </div>
+
+    <div class="dizajn-datoteke">
+      <button type="button" class="gumb tekstualni" id="spremiDizajn">Spremi dizajn</button>
+      <label class="gumb tekstualni datoteka"><input type="file" id="ucitajDizajn" accept="application/json,.json">Učitaj dizajn</label>
+      <button type="button" class="gumb tekstualni" id="vratiZadano">Vrati zadano</button>
+    </div>
+  </aside>
+</main>
+
+<footer class="dno">
+  <p>QR kodovi su <b>statični</b> — sadržaj je upisan u sam kod, ne istječu i ne ovise o ovoj stranici. Prije tiska uvijek skeniraj probni ispis.</p>
+  <p>© app.bonic</p>
+</footer>
+
+<button type="button" class="mini" id="mini" aria-label="Prikaži pregled QR koda"><img alt=""></button>
+<div class="obavijest" id="obavijest" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
