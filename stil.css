@@ -280,3 +280,30 @@ label.gumb.sporedni.datoteka { align-self: flex-start; flex-wrap: wrap; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---------- app-bonic zaglavlje i podnožje (isto kao u _zajednicko/app-bonic.css) ---------- */
+:root { --plo: var(--kartica); --crta: var(--rub); }
+.ab-vrh { border-bottom: 1px solid var(--crta); background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; }
+.ab-vrh-unutra { max-width: 1200px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+.ab-marka { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--tekst); font-weight: 700; letter-spacing: -.01em; }
+.ab-marka img { width: 30px; height: 30px; display: block; }
+.ab-marka span { color: var(--blijedo); font-weight: 500; }
+.ab-vrh nav { margin-left: auto; }
+.ab-vrh nav a { text-decoration: none; font-weight: 600; font-size: 14px; padding: 7px 13px; border: 1px solid var(--crta); border-radius: 999px; background: var(--plo); color: var(--tekst); display: inline-flex; gap: 6px; align-items: center; }
+.ab-vrh nav a:hover { border-color: var(--akcent); }
+.ab-dno { margin-top: 24px; border-top: 1px solid var(--crta); background: var(--plo); }
+.ab-dno-unutra { max-width: 1200px; margin: 0 auto; padding: 28px 16px 36px; display: flex; flex-direction: column; gap: 22px; }
+.ab-gdpr { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 14px; background: var(--ok-meko); color: var(--tekst); }
+.ab-gdpr .ik { width: 26px; height: 26px; color: var(--ok); margin-top: 2px; }
+.ab-gdpr b { display: block; font-size: 15.5px; margin-bottom: 3px; }
+.ab-gdpr p { font-size: 14px; color: var(--blijedo); }
+.ab-ostali h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--blijedo); margin-bottom: 10px; }
+.ab-ostali ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ab-ostali a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--tekst); font-size: 13.5px; font-weight: 550; padding: 6px 11px; border: 1px solid var(--crta); border-radius: 999px; background: var(--bg); }
+.ab-ostali a .ik { width: 15px; height: 15px; color: var(--blijedo); }
+.ab-ostali a:hover { border-color: var(--akcent); }
+.ab-ostali a[aria-current="page"] { background: var(--akcent-meko); border-color: var(--akcent); color: var(--akcent-jak); }
+.ab-potpis { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--blijedo); font-size: 13.5px; }
+.ab-potpis img { width: 22px; height: 22px; }
+.ab-potpis a { color: var(--blijedo); }
+.dno { padding-bottom: 0; }

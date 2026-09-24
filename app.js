@@ -858,7 +858,7 @@ function ucitajDizajn(dat) {
 //  Pokretanje
 // ============================================================
 function pokreni() {
-  $$('.ik-mjesto').forEach(s => { s.outerHTML = ikona(s.dataset.ik); });
+  $$('span.ik-mjesto').forEach(s => { s.outerHTML = ikona(s.dataset.ik); });
   izgradiTipove();
   izgradiBirace();
   izgradiLogoGaleriju();

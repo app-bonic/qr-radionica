@@ -10,3 +10,10 @@ Besplatni generator QR kodova u jednoj web stranici — bez registracije, sve se
 - **Preuzimanje**: PNG (do 2000 px), SVG, JPG, PDF ili kopiranje u međuspremnik; spremanje i učitavanje dizajna (.json)
 
 QR kodovi su statični — sadržaj je upisan u sam kod i ne istječu.
+
+**Stranica:** https://app-bonic.github.io/qr-radionica/
+
+## Privatnost
+Alat radi u potpunosti u pregledniku - ništa se ne šalje na poslužitelj, nema kolačića ni analitike. Biblioteke su u mapi `lib/`, pa stranica ne kontaktira ni vanjske CDN-ove.
+
+Dio zbirke [app-bonic alati](https://app-bonic.github.io/alati/).

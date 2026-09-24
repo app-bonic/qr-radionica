@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QR Radionica</title>
 <meta name="description" content="Besplatni generator QR kodova: URL, vCard, WiFi, događaj, lokacija… s bojama, gradijentom, logom i vlastitim oblicima. Sve se radi u pregledniku.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M6 6h9v9H6zm2 2v5h5V8zm9-2h9v9h-9zm2 2v5h5V8zM6 17h9v9H6zm2 2v5h5v-5zm9-2h3v3h-3zm6 0h3v3h-3zm-3 3h3v3h-3zm-3 3h3v3h-3zm6 0h3v3h-3z'/%3E%3C/svg%3E">
+<link rel="icon" href="zajednicko/logo.svg">
 <link rel="stylesheet" href="stil.css">
 </head>
-<body>
+<body data-alat="qr-radionica">
+<header class="ab-vrh"></header>
 
 <header class="vrh">
   <div class="vrh-unutra">
@@ -142,14 +143,15 @@
 
 <footer class="dno">
   <p>QR kodovi su <b>statični</b> — sadržaj je upisan u sam kod, ne istječu i ne ovise o ovoj stranici. Prije tiska uvijek skeniraj probni ispis.</p>
-  <p>© app.bonic</p>
 </footer>
+<footer class="ab-dno"></footer>
 
 <button type="button" class="mini" id="mini" aria-label="Prikaži pregled QR koda"><img alt=""></button>
 <div class="obavijest" id="obavijest" role="status" aria-live="polite"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="zajednicko/app-bonic.js"></script>
+<script src="lib/qrcode.js"></script>
+<script src="lib/jsQR.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
