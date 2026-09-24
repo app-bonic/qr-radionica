@@ -251,3 +251,10 @@ label.gumb.sporedni.datoteka { align-self: flex-start; flex-wrap: wrap; }
 .ab-potpis a { color: #c7d2e6; }
 
 .oznaka-crvena { display: inline-block; background: var(--crvena); color: #fff; font: 700 17px/1 var(--naslovni); text-transform: uppercase; letter-spacing: .03em; padding: 6px 12px; }
+.ab-marka.ab-igre { padding-left: 14px; border-left: 1px solid var(--crta); }
+.ab-marka.ab-igre small { color: #7b3cff; }
+.ab-marka.ab-igre img { border-radius: 9px; box-shadow: 0 0 0 2px #7b3cff33, 0 0 14px #ff4bd855; }
+.ab-marka.ab-igre:hover img { transform: rotate(-8deg); }
+.ab-marka img { transition: transform .2s; }
+@media (max-width: 600px) { .ab-marka.ab-igre img { display: none; } .ab-marka.ab-igre { padding-left: 10px; } .ab-vrh-unutra { gap: 10px; } .ab-vrh nav a { padding: 8px 11px; } }
+@media (max-width: 420px) { .ab-marka b { font-size: 19px; } .ab-vrh nav a { font-size: 0; gap: 0; } .ab-vrh nav a .ik { width: 20px; height: 20px; } }
